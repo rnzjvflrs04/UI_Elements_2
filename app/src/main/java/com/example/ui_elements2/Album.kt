@@ -23,15 +23,15 @@ class Album : AppCompatActivity() {
             var songsToBeDisplayed = arrayListOf<String>()
             var uri: String = ""
             if (position == 0) {
-                uri = "@drawable/divide_cover"
+                uri = "@drawable/cb"
                 songsToBeDisplayed.clear()
                 songsToBeDisplayed.addAll(resources.getStringArray(R.array.cb))
             } else if (position == 1) {
-                uri = "@drawable/abbey_road_cover"
+                uri = "@drawable/neyo"
                 songsToBeDisplayed.clear()
                 songsToBeDisplayed.addAll(resources.getStringArray(R.array.neyo))
             } else {
-                uri = "@drawable/scorpion_cover"
+                uri = "@drawable/usher"
                 songsToBeDisplayed.clear()
                 songsToBeDisplayed.addAll(resources.getStringArray(R.array.usher))
             }

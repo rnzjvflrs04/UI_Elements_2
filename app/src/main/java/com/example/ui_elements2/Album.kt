@@ -9,35 +9,35 @@ import android.widget.ArrayAdapter
 import android.widget.GridView
 import android.widget.ListView
 
+var albumSongs = ArrayList<String>()
+var albumURI = String
+
 class Album : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_album )
-        //Map the Grid View
+        setContentView(R.layout.activity_album)
+
         val GridView = findViewById<GridView>(R.id.gridView) as GridView
-        //Attach the adapter to the Grid View
-        GridView.adapter = Image(applicationContext)
-        //Item click listener for the Grid View
+
+        GridView.adapter = ImageAdapter(applicationContext)
+
         GridView.onItemClickListener = AdapterView.OnItemClickListener{parent, v, position, id ->
             val intent = Intent(this, AlbumDetails::class.java)
-            var songsToBeDisplayed = arrayListOf<String>()
-            var uri: String = ""
+            var uri: String
             if (position == 0) {
-                uri = "@drawable/cb"
-                songsToBeDisplayed.clear()
-                songsToBeDisplayed.addAll(resources.getStringArray(R.array.cb))
+                uri = "@drawable/divide_cover"
+                albumSongs.clear()
+                albumSongs.addAll(resources.getStringArray(R.array.cb))
             } else if (position == 1) {
-                uri = "@drawable/neyo"
-                songsToBeDisplayed.clear()
-                songsToBeDisplayed.addAll(resources.getStringArray(R.array.neyo))
+                uri = "@drawable/abbey_road_cover"
+                albumSongs.clear()
+                albumSongs.addAll(resources.getStringArray(R.array.neyo))
             } else {
-                uri = "@drawable/usher"
-                songsToBeDisplayed.clear()
-                songsToBeDisplayed.addAll(resources.getStringArray(R.array.usher))
+                uri = "@drawable/scorpion_cover"
+                albumSongs.clear()
+                albumSongs.addAll(resources.getStringArray(R.array.usher))
             }
-            intent.putStringArrayListExtra("songs", songsToBeDisplayed )
             intent.putExtra("imageUri",  uri)
-            intent.putExtra("position", position)
             startActivity(intent)
 
 
@@ -51,3 +51,5 @@ class Album : AppCompatActivity() {
 
 
 }
+
+
